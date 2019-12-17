@@ -25,10 +25,10 @@ before_install:
 # Save path to the git respository
 - PROJECT_PATH=$(pwd)
 install:
-#- pip install -U travis-sphinx
-#- pip install -U sphinx-rtd-theme
-#- pip install -U breathe
-#- pip install -U exhale
+- pip install -U travis-sphinx
+- pip install -U sphinx-rtd-theme
+- pip install -U breathe
+- pip install -U exhale
 # Install ESP32 toochain following steps as desribed
 # in https://docs.espressif.com/projects/esp-idf/en/latest/get-started/#get-started-get-prerequisites
 - mkdir -p ~/esp
@@ -36,14 +36,14 @@ install:
 - git clone --recursive https://github.com/espressif/esp-idf.git
 - cd ~/esp/esp-idf
 - ./install.sh
-- export IDF_PATH="~/esp/esp-idf"
-- export IDF_TOOLS_PATH="$HOME/esp/esp-idf/tools"
+- export IDF_PATH=~/esp/esp-idf
+#- export IDF_TOOLS_PATH="$HOME/esp/esp-idf/tools"
+- export PATH=$PATH:$HOME/esp/esp-idf/tools
 - . $HOME/esp/esp-idf/export.sh
 
 script:
 - #travis-sphinx build --nowarn --source doc/
 # Go back to the git repository
-- cd $PROJECT_PATH
 - idf.py build
 after_success:
 - #travis-sphinx deploy --branches dev
