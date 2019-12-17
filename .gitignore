@@ -1,0 +1,9 @@
+.vscode
+*.code-workspace
+dev-setup.h
+message_exchange.*
+doc/_build
+doc/api
+doc/doxyoutput
+build/
+sdkconfig.old
