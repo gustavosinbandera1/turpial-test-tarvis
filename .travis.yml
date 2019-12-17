@@ -1,6 +1,8 @@
 dist: xenial
-sudo: true
-language: bash
+sudo: false
+language: python
+python:
+  - '3.8'
 os: 
   - linux
 addons:
